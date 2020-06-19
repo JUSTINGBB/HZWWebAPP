@@ -1,0 +1,170 @@
+﻿@model GuiHuaWebApp.Models.GuiHuaJianDu
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>编辑</h1>
+
+@*<h4>GuiHuaJianDu</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PrjName" class="control-label"></label>
+                <input asp-for="PrjName" class="form-control" />
+                <span asp-validation-for="PrjName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JSDanWei" class="control-label"></label>
+                <input asp-for="JSDanWei" class="form-control" />
+                <span asp-validation-for="JSDanWei" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JSWeiZhi" class="control-label"></label>
+                <input asp-for="JSWeiZhi" class="form-control" />
+                <span asp-validation-for="JSWeiZhi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GongGuiNum" class="control-label"></label>
+                <input asp-for="GongGuiNum" class="form-control" />
+                <span asp-validation-for="GongGuiNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JSGuiMo" class="control-label"></label>（单位：亩）
+                <input asp-for="JSGuiMo" class="form-control" />
+                <span asp-validation-for="JSGuiMo" class="text-danger"></span>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">是否施工现场检查</div>
+                <div class="card-body">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsChecked1" /> @Html.DisplayNameFor(model => model.IsChecked1)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsChecked2" /> @Html.DisplayNameFor(model => model.IsChecked2)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    其他情况说明
+                </div>
+                <div class="card-body">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="SFFaWenXinTiShiKa" /> @Html.DisplayNameFor(model => model.SFFaWenXinTiShiKa)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="SFJunGongHeShi" /> @Html.DisplayNameFor(model => model.SFJunGongHeShi)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="SFYanXian" /> @Html.DisplayNameFor(model => model.SFYanXian)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    现场检查情况说明
+                </div>
+                <div class="card-body">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="checkItem1" /> @Html.DisplayNameFor(model => model.checkItem1)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="checkItem2" /> @Html.DisplayNameFor(model => model.checkItem2)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="checkItem3" /> @Html.DisplayNameFor(model => model.checkItem3)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="checkItem4" /> @Html.DisplayNameFor(model => model.checkItem4)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="checkItem5" /> @Html.DisplayNameFor(model => model.checkItem5)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="checkItem6" /> @Html.DisplayNameFor(model => model.checkItem6)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="checkItem7" /> @Html.DisplayNameFor(model => model.checkItem7)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            @*<div class="form-group">
+            <label asp-for="Photos" class="control-label"></label>
+            <input asp-for="Photos" class="form-control" />
+            <span asp-validation-for="Photos" class="text-danger"></span>
+        </div>*@
+          
+            <div class="form-group">
+                <label asp-for="BeiZhu" class="control-label"></label>
+                <input asp-for="BeiZhu" class="form-control" />
+                <span asp-validation-for="BeiZhu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                现场照片
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <p>上传一个或多个文件:</p>
+                            <input type="file" name="files" multiple />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <input class="btn btn-primary" type="submit" value="上传" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">返回列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,139 @@
+﻿@model GuiHuaWebApp.Models.GuiHuaJianDu
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>详情</h1>
+
+<div>
+    @*<h4>GuiHuaJianDu</h4>*@
+    <hr />
+    <dl class="row">
+
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.PrjName)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.PrjName)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.JSDanWei)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.JSDanWei)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.JSWeiZhi)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.JSWeiZhi)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.GongGuiNum)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.GongGuiNum)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.JSGuiMo)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.JSGuiMo) 亩
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.SFYanXian)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.SFYanXian)
+        </dd>
+        <dt class="col-sm-8">
+            是否施工现场检查：
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.IsChecked1) @Html.DisplayNameFor(model => model.IsChecked1)
+        </dd>
+        <dt class = "col-sm-8">
+            @*@Html.DisplayNameFor(model => model.IsChecked2)*@
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.IsChecked2) @Html.DisplayNameFor(model => model.IsChecked2)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.checkItem1)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.checkItem1)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.checkItem2)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.checkItem2)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.checkItem3)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.checkItem3)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.checkItem4)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.checkItem4)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.checkItem5)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.checkItem5)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.checkItem6)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.checkItem6)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.checkItem7)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.checkItem7)
+        </dd>
+        @*<dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.Photos)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Photos)
+        </dd>*@
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.SFFaWenXinTiShiKa)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.SFFaWenXinTiShiKa)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.SFJunGongHeShi)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.SFJunGongHeShi)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.BeiZhu)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.BeiZhu)
+        </dd>
+    </dl>
+    <hr />
+
+    <h2>现场照片</h2>
+    <ul>
+        <li><img src="~/images/test.png" class="img-fluid" alt="Responsive image"></li>
+    </ul>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">编辑</a> |
+    <a asp-action="Index">返回列表</a>
+</div>

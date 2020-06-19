@@ -1,0 +1,167 @@
+﻿@*@model IEnumerable<GuiHuaWebApp.Models.GuiHuaJianDu>*@
+@model ReflectionIT.Mvc.Paging.PagingList<GuiHuaWebApp.Models.GuiHuaJianDu>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<h1>规划监督表</h1>*@
+    <style>
+        .table td{
+            vertical-align:middle;
+        }
+    </style>
+
+<form method="get" class="form-inline" style="margin-bottom:1em;">
+    <input name="filter" class="form-control" placeholder="根据项目名称查询"
+           value="@Model.RouteValue["Filter"]" />
+    <button type="submit" class="btn btn-info">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查询
+    </button>
+</form>
+
+<div>
+    <nav aria-label="翻页">
+        @await this.Component.InvokeAsync("Pager", new { pagingList = this.Model })
+    </nav>
+    
+        共 @ViewData["count"] 条数据
+    <p style="float:right">
+        <a asp-action="Create">新增项目</a> |
+        <a asp-action="">导出表格</a>
+    </p>
+</div>
+
+<table class="table hovertable table-bordered">
+    <thead>
+        <tr> 
+            <th>
+                @Html.SortableHeaderFor(model => model.PrjName)
+            </th>
+            <th>
+                @Html.SortableHeaderFor(model => model.JSDanWei)
+            </th>
+            @*<th>
+                @Html.SortableHeaderFor(model => model.JSWeiZhi)
+            </th>*@
+            <th>
+                @Html.SortableHeaderFor(model => model.GongGuiNum)
+            </th>
+            <th>
+                @Html.SortableHeaderFor(model => model.JSGuiMo)
+            </th>
+            <th>
+                是否施工现场检查
+            </th>
+            @*<th>
+                现场检查情况说明
+            </th>*@
+            <th>
+                其他情况说明
+            </th>
+            @*<th>
+                @Html.SortableHeaderFor(model => model.BeiZhu)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrjName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JSDanWei)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.JSWeiZhi)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.GongGuiNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JSGuiMo) 亩
+            </td>
+            <td>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        第一次:@Html.DisplayFor(modelItem => item.IsChecked1)
+                    </li>
+                    <li  class="list-group-item">
+                        第二次: @Html.DisplayFor(modelItem => item.IsChecked2)
+                    </li>
+                </ul>
+            </td>
+            @*现场检查情况说明*@
+            @*<td>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.checkItem1):
+                        @Html.DisplayFor(modelItem => item.checkItem1)
+                    </li>
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.checkItem2):
+                        @Html.DisplayFor(modelItem => item.checkItem2)
+                    </li>
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.checkItem3):
+                        @Html.DisplayFor(modelItem => item.checkItem3)
+                    </li>
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.checkItem4):
+                        @Html.DisplayFor(modelItem => item.checkItem4)
+                    </li>
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.checkItem5):
+                        @Html.DisplayFor(modelItem => item.checkItem5)
+                    </li>
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.checkItem6):
+                        @Html.DisplayFor(modelItem => item.checkItem6)
+                    </li>
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.checkItem7):
+                        @Html.DisplayFor(modelItem => item.checkItem7)
+                    </li>
+                </ul>
+               
+            </td>*@
+
+            @*其他情况说明*@
+            <td >
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.SFFaWenXinTiShiKa):
+                        @Html.DisplayFor(modelItem => item.SFFaWenXinTiShiKa)
+                    </li>
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.SFJunGongHeShi):
+                        @Html.DisplayFor(modelItem => item.SFJunGongHeShi)
+                    </li>
+                    <li class="list-group-item">
+                        @Html.DisplayNameFor(model => model.SFYanXian):
+                        @Html.DisplayFor(modelItem => item.SFYanXian)
+                    </li>
+                </ul>
+            </td>
+            @*备注*@
+            @*<td>
+                @Html.DisplayFor(modelItem => item.BeiZhu)
+            </td>*@
+            <td style="text-align:center;">
+                <a asp-action="Edit" asp-route-id="@item.Id">编辑</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">详情</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">删除</a> |
+                <a asp-action="" asp-route-id="@item.Id">查看照片</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="翻页">
+    <vc:pager paging-list="@Model" />
+</nav>
