@@ -14,12 +14,14 @@ namespace GuiHuaWebApp.Models
     [Table ("GuiHuaJianDu")]
     public class GuiHuaJianDu
     {
+        public string ImageList = "ImageList";
         /// <summary>
         /// 项目Id
         /// </summary>
         [DisplayName("项目编号")]
         public int Id { get; set; }
         
+        [Required(ErrorMessage ="项目名称是必填项")]
         [DisplayName("项目名称")]
         public String  PrjName { get; set; }
         

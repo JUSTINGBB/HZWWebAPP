@@ -9,6 +9,9 @@ using GuiHuaWebApp.Data;
 using GuiHuaWebApp.Models;
 using ReflectionIT.Mvc.Paging;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Http;
+using System.Collections;
+using System.IO;
 
 namespace GuiHuaWebApp.Controllers
 {
@@ -97,6 +100,8 @@ namespace GuiHuaWebApp.Controllers
             {
                 return NotFound();
             }
+            ReadPicture(id);
+
             return View(guiHuaJianDu);
         }
 
@@ -177,6 +182,106 @@ namespace GuiHuaWebApp.Controllers
         public IActionResult TongJiFenXi()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadFiles(IFormCollection formCollection, int id, int CrtUser)
+        {
+            try
+            {
+                string dd = formCollection["File"];
+                var form = formCollection;
+                Hashtable hashtable = new Hashtable();
+                List<string> fileNameList = null;
+                //fileNameArr.Append("sdas");
+                IFormFileCollection cols = Request.Form.Files;
+                if(cols == null || cols.Count == 0)
+                {
+                    return Json(new { status = -1, message = "没有上传文件", data = hashtable });
+                }
+                foreach(IFormFile file in cols)
+                {
+                    string[] LimitPictureType = { ".JPG", ".JPGE", ".GIF", ".PNG", ".BMP" };
+                    string currentPictureExtension = Path.GetExtension(file.FileName).ToUpper();
+                    if (LimitPictureType.Contains(currentPictureExtension))
+                    {
+                        string fileFolder = Path.Combine("uploadFiles/photos", id.ToString());
+                        string new_path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", fileFolder);
+                        if (!Directory.Exists(new_path))
+                        {
+                            Directory.CreateDirectory(new_path);
+                        }
+                        var path = Path.Combine(new_path,file.FileName);
+                        //if (System.IO.File.Exists(path))
+                        //{
+                        //    return Json(new { status = 0, message = "文件已存在", data = hashtable });
+                        //}
+                        using (var stream = new FileStream(path, FileMode.CreateNew))
+                        {
+                            file.CopyTo(stream);
+                            fileNameList = new List<string>();
+                            fileNameList.Add(path);
+                        }
+                    }
+                    else
+                    {
+                        return Json(new { status = -2, message = "请上传指定格式的图片", data = hashtable });
+                    }
+                }
+                hashtable.Add("file", fileNameList);
+                return Json(new { status = 0, message = "上传成功", data = hashtable });
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { status = -3, message = "上传失败", data = ex.Message });
+            }
+        }
+
+        public ActionResult ReadPicture(int? id)
+        {
+            string fileFolder = Path.Combine("uploadFiles/photos", id.ToString());
+            string imgPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", fileFolder);
+            var imgList = new List<string>();
+            if (Directory.Exists(imgPath))
+            {
+                var files = Directory.GetFiles(imgPath, "*.*", SearchOption.TopDirectoryOnly);
+                var filesNames = files.Select(p => Path.GetFileName(p));
+                var imgUrls = filesNames.Select(p =>
+                {
+                    return p;
+                });
+                var imgQuery = from name in imgUrls
+                               orderby name descending
+                               select name;
+                if (imgQuery.ToArray().Length > 0)
+                {
+                    imgList = imgQuery.ToList();
+                }
+            }
+            List<SelectListItem> ImgList = imgList.Select(p => new SelectListItem() { Text = p, Value = p }).ToList();
+            ViewBag.imgList = ImgList;
+            return Json(ImgList);
+        }
+
+        public ActionResult DeletePicture(int? id,string imgName)
+        {
+            string fileFolder = Path.Combine("uploadFiles/photos", id.ToString());
+            string imgPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", fileFolder);
+            var imgFullName = Path.Combine(imgPath,imgName);
+            FileInfo fileInfo = new FileInfo(imgFullName);
+            string deleteInfo = "";
+            try
+            {
+                fileInfo.Delete();
+                deleteInfo = "删除成功";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return Json(new { deleteInfo = deleteInfo });
         }
     }
 }
