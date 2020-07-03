@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using GuiHuaWebApp.Data;
 using ReflectionIT.Mvc.Paging;
+using Microsoft.AspNetCore.Identity;
 
 namespace GuiHuaWebApp
 {
@@ -26,12 +27,19 @@ namespace GuiHuaWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddRazorPages().AddRazorRuntimeCompilation()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizePage("/Home/Privacy");
+                });
 
             services.AddControllersWithViews();
 
             services.AddDbContext<GuiHuaWebAppContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("GuiHuaWebAppContext")));
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<GuiHuaWebAppContext>();
 
             services.AddPaging(options => {
                 options.ViewName = "Bootstrap4";
@@ -45,6 +53,7 @@ namespace GuiHuaWebApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -54,13 +63,21 @@ namespace GuiHuaWebApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            // app.UseCookiePolicy();
 
             app.UseRouting();
+            // app.UseRequestLocalization();
+            // app.UseCors();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            // app.UseSession();
+            // app.UseResponseCaching();
+
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=GuiHuaJianDus}/{action=Index}/{id?}");

@@ -31,6 +31,12 @@
             @Html.DisplayFor(model => model.JSWeiZhi)
         </dd>
         <dt class="col-sm-8">
+            @Html.DisplayNameFor(model => model.FaZhengTime)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.FaZhengTime)
+        </dd>
+        <dt class="col-sm-8">
             @Html.DisplayNameFor(model => model.GongGuiNum)
         </dt>
         <dd class="col-sm-4">
@@ -52,13 +58,19 @@
             是否施工现场检查：
         </dt>
         <dd class="col-sm-4">
-            @Html.DisplayFor(model => model.IsChecked1) @Html.DisplayNameFor(model => model.IsChecked1)
+            @Html.DisplayNameFor(model => model.IsChecked1): @Html.DisplayFor(model => model.IsChecked1)
         </dd>
         <dt class="col-sm-8">
             @*@Html.DisplayNameFor(model => model.IsChecked2)*@
         </dt>
         <dd class="col-sm-4">
-            @Html.DisplayFor(model => model.IsChecked2) @Html.DisplayNameFor(model => model.IsChecked2)
+            @Html.DisplayNameFor(model => model.IsChecked2): @Html.DisplayFor(model => model.IsChecked2)
+        </dd>
+        <dt class="col-sm-8">
+            @Html.DisplayNameFor(model => model.SFFaWenXinTiShiKa)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.SFFaWenXinTiShiKa)
         </dd>
         <dt class="col-sm-8">
             @Html.DisplayNameFor(model => model.checkItem1)
@@ -108,12 +120,6 @@
         <dd class="col-sm-4">
             @Html.DisplayFor(model => model.Photos)
         </dd>*@
-        <dt class="col-sm-8">
-            @Html.DisplayNameFor(model => model.SFFaWenXinTiShiKa)
-        </dt>
-        <dd class="col-sm-4">
-            @Html.DisplayFor(model => model.SFFaWenXinTiShiKa)
-        </dd>
         <dt class="col-sm-8">
             @Html.DisplayNameFor(model => model.SFJunGongHeShi)
         </dt>

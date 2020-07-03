@@ -45,10 +45,14 @@ namespace GuiHuaWebApp.Models
         /// 是否施工现场检查
         /// </summary>
         [DisplayName("第一次")]
-        public bool IsChecked1 { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        public DateTime? IsChecked1 { get; set; }
  
         [DisplayName("第二次")]
-        public bool IsChecked2 { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        public DateTime? IsChecked2 { get; set; }
         
         [DisplayName("施工现场是否按要求设置规划公布牌")]
         public bool checkItem1 { get; set; }
@@ -82,6 +86,14 @@ namespace GuiHuaWebApp.Models
         
         [DisplayName("备注")]
         public String BeiZhu { get; set; }
+
+        [DisplayName("发证时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        public DateTime? FaZhengTime { get; set; }
+
+        [DisplayName("★")]
+        public bool BiaoJi { get; set; }
 
     }
 }

@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Http;
 using System.Collections;
 using System.IO;
+using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GuiHuaWebApp.Controllers
 {
@@ -40,7 +42,8 @@ namespace GuiHuaWebApp.Controllers
             var model = await PagingList.CreateAsync(qry, pageSize, pageIndex, sortExpression, "Id");
             model.RouteValue = new RouteValueDictionary
             {
-                {"filter",filter }
+                {"filter",filter },
+                {"pageSize",pageSize }
             };
 
             //return View(await _context.GuiHuaJianDu.ToListAsync());
@@ -66,6 +69,7 @@ namespace GuiHuaWebApp.Controllers
         }
 
         // GET: GuiHuaJianDus/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -76,7 +80,7 @@ namespace GuiHuaWebApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PrjName,JSDanWei,JSWeiZhi,GongGuiNum,JSGuiMo,SFYanXian,IsChecked1,IsChecked2,checkItem1,checkItem2,checkItem3,checkItem4,checkItem5,checkItem6,checkItem7,Photos,SFFaWenXinTiShiKa,SFJunGongHeShi,BeiZhu")] GuiHuaJianDu guiHuaJianDu)
+        public async Task<IActionResult> Create([Bind("Id,PrjName,JSDanWei,JSWeiZhi,FaZhengTime,GongGuiNum,JSGuiMo,SFYanXian,IsChecked1,IsChecked2,checkItem1,checkItem2,checkItem3,checkItem4,checkItem5,checkItem6,checkItem7,Photos,SFFaWenXinTiShiKa,SFJunGongHeShi,BeiZhu,BiaoJi")] GuiHuaJianDu guiHuaJianDu)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +92,7 @@ namespace GuiHuaWebApp.Controllers
         }
 
         // GET: GuiHuaJianDus/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -110,7 +115,7 @@ namespace GuiHuaWebApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PrjName,JSDanWei,JSWeiZhi,GongGuiNum,JSGuiMo,SFYanXian,IsChecked1,IsChecked2,checkItem1,checkItem2,checkItem3,checkItem4,checkItem5,checkItem6,checkItem7,Photos,SFFaWenXinTiShiKa,SFJunGongHeShi,BeiZhu")] GuiHuaJianDu guiHuaJianDu)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PrjName,JSDanWei,JSWeiZhi,FaZhengTime,GongGuiNum,JSGuiMo,SFYanXian,IsChecked1,IsChecked2,checkItem1,checkItem2,checkItem3,checkItem4,checkItem5,checkItem6,checkItem7,Photos,SFFaWenXinTiShiKa,SFJunGongHeShi,BeiZhu,BiaoJi")] GuiHuaJianDu guiHuaJianDu)
         {
             if (id != guiHuaJianDu.Id)
             {
@@ -141,6 +146,7 @@ namespace GuiHuaWebApp.Controllers
         }
 
         // GET: GuiHuaJianDus/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -174,16 +180,33 @@ namespace GuiHuaWebApp.Controllers
             return _context.GuiHuaJianDu.Any(e => e.Id == id);
         }
 
+        /// <summary>
+        /// 地图
+        /// </summary>
+        /// <returns></returns>
+        //[Authorize]
         public IActionResult map()
         {
             return View();
         }
 
+        /// <summary>
+        /// 统计分许
+        /// </summary>
+        /// <returns></returns>
+        //[Authorize]
         public IActionResult TongJiFenXi()
         {
             return View();
         }
 
+        /// <summary>
+        /// 上传文件、图片
+        /// </summary>
+        /// <param name="formCollection"></param>
+        /// <param name="id"></param>
+        /// <param name="CrtUser"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult UploadFiles(IFormCollection formCollection, int id, int CrtUser)
         {
@@ -211,7 +234,11 @@ namespace GuiHuaWebApp.Controllers
                         {
                             Directory.CreateDirectory(new_path);
                         }
-                        var path = Path.Combine(new_path,file.FileName);
+                        string FileName = Path.GetFileNameWithoutExtension(file.FileName)+"_"
+                            +DateTime.Now.ToString("yyyyMMddHHmmss_fff", DateTimeFormatInfo.InvariantInfo) 
+                            + currentPictureExtension;
+                        var path = Path.Combine(new_path, FileName);
+
                         //if (System.IO.File.Exists(path))
                         //{
                         //    return Json(new { status = 0, message = "文件已存在", data = hashtable });
@@ -238,6 +265,11 @@ namespace GuiHuaWebApp.Controllers
             }
         }
 
+        /// <summary>
+        /// 读取照片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult ReadPicture(int? id)
         {
             string fileFolder = Path.Combine("uploadFiles/photos", id.ToString());
@@ -264,6 +296,12 @@ namespace GuiHuaWebApp.Controllers
             return Json(ImgList);
         }
 
+        /// <summary>
+        /// 删除照片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="imgName"></param>
+        /// <returns></returns>
         public ActionResult DeletePicture(int? id,string imgName)
         {
             string fileFolder = Path.Combine("uploadFiles/photos", id.ToString());

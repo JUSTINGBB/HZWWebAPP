@@ -10,130 +10,175 @@
     @*<h4>GuiHuaJianDu</h4>*@
     <hr />
     <dl class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">基本信息</div>
+                <div class="card-body">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PrjName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.PrjName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.JSDanWei)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.JSDanWei)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.JSWeiZhi)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.JSWeiZhi)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FaZhengTime)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.FaZhengTime)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GongGuiNum)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GongGuiNum)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.JSGuiMo)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.JSGuiMo) 平方米
+                    </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.SFYanXian)
+                        @Html.DisplayNameFor(model => model.SFYanXian)
+                    </dd>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">是否施工现场检查</div>
+                <div class="card-body">
+                    @Html.DisplayNameFor(model => model.IsChecked1)：@Html.DisplayFor(model => model.IsChecked1)
+                    <br />
+                    @Html.DisplayNameFor(model => model.IsChecked2)：@Html.DisplayFor(model => model.IsChecked2)
+                    <br />
+                    @Html.DisplayFor(model => model.SFFaWenXinTiShiKa)
+                    @Html.DisplayNameFor(model => model.SFFaWenXinTiShiKa)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">现场检查情况说明</div>
+                <div class="card-body">
+                    <div>
+                        @Html.DisplayFor(model => model.checkItem1)
+                        @Html.DisplayNameFor(model => model.checkItem1)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.checkItem2)
+                        @Html.DisplayNameFor(model => model.checkItem2)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.checkItem3)
+                        @Html.DisplayNameFor(model => model.checkItem3)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.checkItem4)
+                        @Html.DisplayNameFor(model => model.checkItem4)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.checkItem5)
+                        @Html.DisplayNameFor(model => model.checkItem5)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.checkItem6)
+                        @Html.DisplayNameFor(model => model.checkItem6)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.checkItem7)
+                        @Html.DisplayNameFor(model => model.checkItem7)
+                    </div>
+                </div>
+            </div>
 
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.PrjName)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.PrjName)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.JSDanWei)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.JSDanWei)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.JSWeiZhi)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.JSWeiZhi)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.GongGuiNum)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.GongGuiNum)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.JSGuiMo)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.JSGuiMo) 亩
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.SFYanXian)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.SFYanXian)
-        </dd>
-        <dt class="col-sm-8">
-            是否施工现场检查：
-        </dt>
-        <dd class="col-sm-4">
-            @Html.DisplayFor(model => model.IsChecked1) @Html.DisplayNameFor(model => model.IsChecked1)
-        </dd>
-        <dt class = "col-sm-8">
-            @*@Html.DisplayNameFor(model => model.IsChecked2)*@
-        </dt>
-        <dd class="col-sm-4">
-            @Html.DisplayFor(model => model.IsChecked2) @Html.DisplayNameFor(model => model.IsChecked2)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.checkItem1)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.checkItem1)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.checkItem2)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.checkItem2)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.checkItem3)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.checkItem3)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.checkItem4)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.checkItem4)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.checkItem5)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.checkItem5)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.checkItem6)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.checkItem6)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.checkItem7)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.checkItem7)
-        </dd>
-        @*<dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.Photos)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.Photos)
-        </dd>*@
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.SFFaWenXinTiShiKa)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.SFFaWenXinTiShiKa)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.SFJunGongHeShi)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.SFJunGongHeShi)
-        </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.BeiZhu)
-        </dt>
-        <dd class = "col-sm-4">
-            @Html.DisplayFor(model => model.BeiZhu)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SFJunGongHeShi)
+                @Html.DisplayNameFor(model => model.SFJunGongHeShi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BeiZhu)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BeiZhu)
+            </dd>
+
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    现场照片
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12" style="margin-bottom:1rem;">
+                        <select class="custom-select" id="ImageList" style="margin-bottom:1rem;" multiple>
+                            @*<option selected>Open this select menu</option>*@
+                        </select>
+                        <a href="" target=""><input type="button" id="srcImgBtn" value="查看原图" class="btn btn-dark"></a
+                    </div>
+                    <div class="col-md-12">
+                        <img id="showImg" src="~/images/blank.png" alt="选择一张图片" class="img-thumbnail" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </dl>
     <hr />
-
-    <h2>现场照片</h2>
-    <ul>
-        <li><img src="~/images/test.png" class="img-fluid" alt="Responsive image"></li>
-    </ul>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">编辑</a> |
     <a asp-action="Index">返回列表</a>
 </div>
+
+@section Scripts{
+    <script>
+        var id = @Model.Id;
+        var imgName = null;
+        ReadPicture();
+        @* 切换当前显示的图片 *@
+        $("#ImageList").on("change", function () {
+            imgName = $("option:selected", this).val();
+            var imgUrl = "../../uploadFiles/photos/" + id + "/" + imgName;
+            $("#showImg").attr({ "src": imgUrl });
+            $("#deleteInfo").text("");
+        });
+        @* 查看原图 *@
+        $("#srcImgBtn").click(function () {
+            var src = $("#showImg").attr("src");
+            if (src == "/images/blank.png") {
+                $('#srcImgBtn').parent().attr({ "href": "", "target": "" });
+            } else {
+
+                $('#srcImgBtn').parent().attr({ "href": src, "target": "_blank" });
+            }
+        });
+        //图片读取
+        function ReadPicture() {
+            $.ajax("../ReadPicture", {
+                type: "GET",
+                datatype: "json",
+                data: {
+                    id: id
+                },
+                error: function () { },
+                success: function (data) {
+                    $("#ImageList").empty();
+                    $.each(data, function (i, item) {
+                        $("<option></option>").val(item["value"]).text(item["text"]).appendTo($("#ImageList"));
+                    })
+                }
+            });
+        }
+    </script>
+}

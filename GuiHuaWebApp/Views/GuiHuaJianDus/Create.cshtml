@@ -9,7 +9,7 @@
 @*<h4>GuiHuaJianDu</h4>*@
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -28,14 +28,24 @@
                 <span asp-validation-for="JSWeiZhi" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="FaZhengTime" class="control-label"></label>
+                <input asp-for="FaZhengTime " class="form-control" />
+                <span asp-validation-for="FaZhengTime " class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="GongGuiNum" class="control-label"></label>
                 <input asp-for="GongGuiNum" class="form-control" />
                 <span asp-validation-for="GongGuiNum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JSGuiMo" class="control-label"></label>
+                <label asp-for="JSGuiMo" class="control-label"></label>（单位：平方米）
                 <input asp-for="JSGuiMo" class="form-control" />
                 <span asp-validation-for="JSGuiMo" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SFYanXian" /> @Html.DisplayNameFor(model => model.SFYanXian)
+                </label>
             </div>
 
             <div class="card">
@@ -51,27 +61,9 @@
                             <input class="form-check-input" asp-for="IsChecked2" /> @Html.DisplayNameFor(model => model.IsChecked2)
                         </label>
                     </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    其他情况说明
-                </div>
-                <div class="card-body">
                     <div class="form-group form-check">
                         <label class="form-check-label">
                             <input class="form-check-input" asp-for="SFFaWenXinTiShiKa" /> @Html.DisplayNameFor(model => model.SFFaWenXinTiShiKa)
-                        </label>
-                    </div>
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" asp-for="SFJunGongHeShi" /> @Html.DisplayNameFor(model => model.SFJunGongHeShi)
-                        </label>
-                    </div>
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" asp-for="SFYanXian" /> @Html.DisplayNameFor(model => model.SFYanXian)
                         </label>
                     </div>
                 </div>
@@ -119,7 +111,17 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SFJunGongHeShi" /> @Html.DisplayNameFor(model => model.SFJunGongHeShi)
+                </label>
+            </div>
 
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BiaoJi" /> @Html.DisplayNameFor(model => model.BiaoJi) （是否标记出来）
+                </label>
+            </div>
             <div class="form-group">
                 <label asp-for="BeiZhu" class="control-label"></label>
                 <input asp-for="BeiZhu" class="form-control" />
