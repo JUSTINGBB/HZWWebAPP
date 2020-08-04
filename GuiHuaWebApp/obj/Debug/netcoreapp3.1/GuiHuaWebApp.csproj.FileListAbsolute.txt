@@ -460,3 +460,14 @@ D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\GuiH
 D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\GuiHuaWebApp.MvcApplicationPartsAssemblyInfo.cache
 D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\bin\Debug\netcoreapp3.1\libman.json
 D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\GuiHuaWebApp.csprojAssemblyReference.cache
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\DeletePersonalData.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\DownloadPersonalData.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\PersonalData.cshtml.g.cs
+D:\VSprojects\vs2019Projects\HZWWebAPP\GuiHuaWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.cshtml.g.cs

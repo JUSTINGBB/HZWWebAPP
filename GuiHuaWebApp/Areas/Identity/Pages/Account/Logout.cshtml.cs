@@ -28,7 +28,7 @@ namespace GuiHuaWebApp.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
-            await _signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();//清除 cookie 中存储的用户声明
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {
@@ -36,7 +36,7 @@ namespace GuiHuaWebApp.Areas.Identity.Pages.Account
             }
             else
             {
-                return RedirectToPage();
+                return RedirectToPage();//需要是重定向，以便浏览器执行新请求并更新用户的标识
             }
         }
     }
