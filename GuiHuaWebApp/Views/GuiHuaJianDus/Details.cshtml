@@ -124,7 +124,7 @@
                         <select class="custom-select" id="ImageList" style="margin-bottom:1rem;" multiple>
                             @*<option selected>Open this select menu</option>*@
                         </select>
-                        <a href="" target=""><input type="button" id="srcImgBtn" value="查看原图" class="btn btn-dark"></a
+                        <a href="" target=""><input type="button" id="srcImgBtn" value="查看原图" class="btn btn-dark"></a>
                     </div>
                     <div class="col-md-12">
                         <img id="showImg" src="~/images/blank.png" alt="选择一张图片" class="img-thumbnail" />
@@ -137,8 +137,10 @@
     <hr />
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">编辑</a> |
-    <a asp-action="Index">返回列表</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" 
+       asp-route-pageIndex="@ViewData["pageIndex"]" asp-route-pageSize="@ViewData["pageSize"]">编辑</a> |
+    <a asp-action="Index" 
+       asp-route-pageIndex="@ViewData["pageIndex"]" asp-route-pageSize="@ViewData["pageSize"]">返回列表</a>
 </div>
 
 @section Scripts{

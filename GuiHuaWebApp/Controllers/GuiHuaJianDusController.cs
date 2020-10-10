@@ -20,7 +20,10 @@ namespace GuiHuaWebApp.Controllers
     public class GuiHuaJianDusController : Controller
     {
         private readonly GuiHuaWebAppContext _context;
-
+        //private static readonly int _PAGESIZE = 5;
+        //private static readonly int _PAGEINDEX = 1;
+        private static int _pageIndex;
+        private static int _pageSize;
         public GuiHuaJianDusController(GuiHuaWebAppContext context)
         {
             _context = context;
@@ -28,8 +31,13 @@ namespace GuiHuaWebApp.Controllers
 
         // GET: GuiHuaJianDus
         public async Task<IActionResult> Index(string filter ,int pageSize = 5,int pageIndex = 1,
-            string sortExpression = "PrjName")
+            string sortExpression = "Id")
         {
+            ViewData["pageIndex"] = pageIndex;
+            ViewData["pageSize"] = pageSize;
+            _pageIndex = pageIndex;
+            _pageSize = pageSize;
+
             var qry = _context.GuiHuaJianDu.AsNoTracking().AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(filter))
@@ -57,7 +65,8 @@ namespace GuiHuaWebApp.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["pageIndex"] = _pageIndex;
+            ViewData["pageSize"] = _pageSize;
             var guiHuaJianDu = await _context.GuiHuaJianDu
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (guiHuaJianDu == null)
@@ -95,6 +104,8 @@ namespace GuiHuaWebApp.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["pageIndex"] = _pageIndex;
+            ViewData["pageSize"] = _pageSize;
             if (id == null)
             {
                 return NotFound();
@@ -140,7 +151,7 @@ namespace GuiHuaWebApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index),new { pageSize=_pageSize,pageIndex=_pageIndex});
             }
             return View(guiHuaJianDu);
         }
@@ -208,6 +219,7 @@ namespace GuiHuaWebApp.Controllers
         /// <param name="CrtUser"></param>
         /// <returns></returns>
         [HttpPost]
+        [DisableRequestSizeLimit]
         public ActionResult UploadFiles(IFormCollection formCollection, int id, int CrtUser)
         {
             try

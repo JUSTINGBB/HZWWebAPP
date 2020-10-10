@@ -180,10 +180,12 @@
             @Html.DisplayFor(modelItem => item.BeiZhu)
         </td>*@
         <td style="text-align:center;">
-            <a asp-action="Details" asp-route-id="@item.Id">详情</a>  
+            <a asp-action="Details" asp-route-id="@item.Id" 
+               asp-route-pageIndex="@ViewData["pageIndex"]" asp-route-pageSize="@ViewData["pageSize"]">详情</a>  
             @if (User.Identity.IsAuthenticated)
             {
-                <text>|</text><a asp-action="Edit" asp-route-id="@item.Id">编辑</a> <text>|</text>
+                <text>|</text><a asp-action="Edit" asp-route-id="@item.Id"
+                                 asp-route-pageIndex="@ViewData["pageIndex"]" asp-route-pageSize="@ViewData["pageSize"]">编辑</a> <text>|</text>
                 <a asp-action="Delete" asp-route-id="@item.Id">删除</a> 
             }
 
